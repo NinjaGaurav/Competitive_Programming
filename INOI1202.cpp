@@ -1,129 +1,121 @@
-/** LAZY PROPAGATION SEGMENT TREE
- * In this code we have a very large array called arr, and very large set of operations
- * Operation #1: Increment the elements within range [i, j] with value val
- * Operation #2: Get max element within range [i, j]
- * Build tree: build_tree(1, 0, N-1)
- * Update tree: update_tree(1, 0, N-1, i, j, value)
- * Query tree: query_tree(1, 0, N-1, i, j)
- * Actual space required by the tree = 2*2^ceil(log_2(n)) - 1
- VALUES OUT OF RANGE OR WRONG RANGE ARE AUTOMATICALLY IGNORED BY THE FUNCTIONS
- 
- */
+/////////////////////////////////////
+//	Author:			Gaurav Bholla  //
+//	Institution: 	ASET, Bijwasan //
+/////////////////////////////////////
 
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
-#define N 20
-#define MAX 4000000
-#define inf 0x7fffffff
-int arr[MAX];
-int tree[MAX];
-int lazy[MAX];
 
-/**
- * Build and init tree
- */
-void build_tree(int node, int a, int b) {
-  	if(a > b) return; // Out of range
+#define rep(i, a, b) for(int i = a; i < (b); ++i)
+#define trav(a, x) for(auto& a : x)
+#define all(x) x.begin(), x.end()
+#define sz(x) (int)(x).size()
+typedef long long ll;
+typedef pair<int, int> pii;
+typedef vector<int> vi;
+class SegmentTreeRecLazy
+{
+public:
+    SegmentTreeRecLazy(int n) : n(n)
+    {
+        data.assign(4 * n, 0);
+        todo.assign(4 * n, 0);
+    }
 
-  	if(a == b) { // Leaf node
-    		tree[node] = arr[a]; // Init value
-		return;
-	}
+    SegmentTreeRecLazy(std::vector<int> const& v) {
+        n = v.size();
+        data.assign(4 * n, 0);
+        todo.assign(4 * n, 0);
+        build(v);
+    }
 
-	build_tree(node*2, a, (a+b)/2); // Init left child
-	build_tree(node*2+1, 1+(a+b)/2, b); // Init right child
+    void build(std::vector<int> const& v, int id = 1, int l = 0, int r = -1) {
+        if (r == -1)
+            r = n;
 
-	tree[node] = max(tree[node*2], tree[node*2+1]); // Init root value
-}
+        if (l == r - 1) {
+            data[id] = v[l];
+        } else {
+            int m = (l + r) >> 1;
+            build(v, id << 1, l, m);
+            build(v, id << 1 | 1, m, r);
+            data[id] = std::max(data[id << 1], data[id << 1 | 1]);
+        }
+    }
 
-/**
- * Increment elements within range [i, j] with value value
- */
-void update_tree(int node, int a, int b, int i, int j, int value) {
+    int minimum(int x, int y, int id = 1, int l = 0, int r = -1)
+    {
+        if (r == -1)
+            r = n;
 
-  	if(lazy[node] != 0) { // This node needs to be updated
-   		tree[node] += lazy[node]; // Update it
+        if (x >= r || y <= l) {
+            return std::numeric_limits<int>::min();
+        } else if (x <= l && r <= y) {
+            return data[id];
+        } else {
+            push(id, l, r);
+            int m = (l + r) >> 1;
+            return std::max(minimum(x, y, id << 1, l, m),
+                            minimum(x, y, id << 1 | 1, m, r));
+        }
+    }
 
-		if(a != b) {
-			lazy[node*2] += lazy[node]; // Mark child as lazy
-    			lazy[node*2+1] += lazy[node]; // Mark child as lazy
-		}
+    void update(int x, int y, int addend, int id = 1, int l = 0, int r = -1)
+    {
+        if (r == -1)
+            r = n;
 
-   		lazy[node] = 0; // Reset it
-  	}
+        if (x >= r || y <= l) 
+	{	//OUT OF RANGE VALUES IGNORED
+        } 
+	else if (x <= l && r <= y) {
+            data[id] += addend;
+            todo[id] += addend;
+        }
+	else {
+            push(id, l, r);
+            int m = (l + r) >> 1;
+            update(x, y, addend, id << 1, l, m);
+            update(x, y, addend, id << 1 | 1, m, r);
+            data[id] = std::max(data[id << 1], data[id << 1 | 1]);
+        }
+    }
 
-	if(a > b || a > j || b < i) // Current segment is not within range [i, j]
-		return;
+private:
+    void push(int id, int l, int r)
+    {
+        data[id << 1] += todo[id];
+        todo[id << 1] += todo[id];
+        data[id << 1 | 1] += todo[id];
+        todo[id << 1 | 1] += todo[id];
+        todo[id] = 0;
+    }
 
-  	if(a >= i && b <= j) { // Segment is fully within range
-    		tree[node] += value;
-
-		if(a != b) { // Not leaf node
-			lazy[node*2] += value;
-			lazy[node*2+1] += value;
-		}
-
-    		return;
-	}
-
-	update_tree(node*2, a, (a+b)/2, i, j, value); // Updating left child
-	update_tree(1+node*2, 1+(a+b)/2, b, i, j, value); // Updating right child
-
-	tree[node] = max(tree[node*2], tree[node*2+1]); // Updating root with max value
-}
-
-/**
- * Query tree to get max element value within range [i, j]
- */
-int query_tree(int node, int a, int b, int i, int j) {
-
-	if(a > b || a > j || b < i) return -inf; // Out of range
-
-	if(lazy[node] != 0) { // This node needs to be updated
-		tree[node] += lazy[node]; // Update it
-
-		if(a != b) {
-			lazy[node*2] += lazy[node]; // Mark child as lazy
-			lazy[node*2+1] += lazy[node]; // Mark child as lazy
-		}
-
-		lazy[node] = 0; // Reset it
-	}
-
-	if(a >= i && b <= j) // Current segment is totally within range [i, j]
-		return tree[node];
-
-	int q1 = query_tree(node*2, a, (a+b)/2, i, j); // Query left child
-	int q2 = query_tree(1+node*2, 1+(a+b)/2, b, i, j); // Query right child
-
-	int res = max(q1, q2); // Return final result
-
-	return res;
-}
-
+    int n;
+    std::vector<int> data, todo;
+};
 int main() {
+
+	cin.sync_with_stdio(0); cin.tie(0);
+	cin.exceptions(cin.failbit);
     int n;
     cin>>n;
+    vector<int> arr(n);
 	for(int i = 0; i < n; i++)
     {
         cin>>arr[i];
         arr[i]+=i+1;
     }
-
-	build_tree(1, 0, n-1);
-
-	memset(lazy, 0, sizeof lazy);
-
-//	update_tree(1, 0, n-1, 0, 6, -2); // Increment range [0, 6] by 5. here 0, N-1 represent the current range.
-
-	cout << query_tree(1, 0, n-1, 0, n-1) << endl; // Get max element in range [0, N-1]
-	for(int i=2;i<=n;i++)
+    SegmentTreeRecLazy st(arr);
+    cout << st.minimum(0,n) << '\n';
+    for(int i=2;i<=n;i++)
     {
-        update_tree(1, 0, n-1, 0, n-i, 1); // Increment range [0, 6] by 5. here 0, N-1 represent the current range.
-        update_tree(1, 0, n-1, n-i+1, n-i+1, -n+1); // Increment range [0, 6] by 5. here 0, N-1 represent the current range.
-        update_tree(1, 0, n-1, n-i+2, n-1, 1); // Increment range [0, 6] by 5. here 0, N-1 represent the current range.
-        cout << query_tree(1, 0, n-1, 0, n-1) << endl; // Get max element in range [0, N-1]
+        st.update(0, n-i+1, 1);
+        st.update(n-i+1, n-i+2, -n+1);
+        st.update(n-i+2, n, 1);
+        cout << st.minimum(0,n) << '\n';
 
     }
     return 0;
+
 }
