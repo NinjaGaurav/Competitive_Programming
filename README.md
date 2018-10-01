@@ -47,7 +47,7 @@ CodeChef is an Indian-based competitive programming website that provides hundre
 
 GeeksforGeeks has the best collection of articles, explanations, and code solutions for algorithms and data structure topics. You can see an example here of how they break down a complex question into simpler parts, explain the solution and then provide a code solution. They also have an online editor where you can practice solving challenges yourself before seeing the solution.
 
-**AdvancedS**
+**Advanced**
 
 [Codeforces](http://codeforces.com/)
 
