@@ -7,6 +7,7 @@ An ([IDE](https://en.wikipedia.org/wiki/Integrated_development_environment)) is 
  
  An "Online IDE" has the features mentioned above but runs in a web browser instead of installing as a native application. An "Online IDE" can be made accessible in offline mode without an internet connection and still satisfy the above conditions.
 Check [Resources](https://github.com/NinjaGaurav/Competitive_Programming/blob/master/Resources.md) for great Resources!
+> I use CodeBlocks (C++)
 
 ## Full IDE
 
