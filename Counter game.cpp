@@ -1,3 +1,4 @@
+//https://www.hackerrank.com/challenges/counter-game/problem
 #include <bits/stdc++.h>
 
 using namespace std;
