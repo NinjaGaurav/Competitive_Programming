@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1540034491 source:f:\gaurav documents\c++\probtnpo\main.cpp
+	<iostream>
+	<string>
+	<sstream>
+	<cassert>
+
