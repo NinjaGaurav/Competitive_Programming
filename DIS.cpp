@@ -31,8 +31,11 @@ int main() {
             cin>>a[i];
         rep(i,0,n)
             cin>>b[i];
-
-        ll sht=numeric_limits<double>::max();
+	    if(a[0]>0 || b[n-1]>0 || a[n-1]!=b[0]){
+		    cout<<"No\n";
+		    continue;
+	    }
+        double sht=numeric_limits<double>::max();
             rep(i,0,n)
                 sht=min(sht,a[i]+b[i]);
 
@@ -43,7 +46,7 @@ int main() {
                     f=0;
                     break;
                 }
-                if((a[i]==0 && i!=0) || (b[i]==0 && i!=n-1))
+                if((a[i]==0 && i!=0) || (b[i]==0 && i!=n-1))    //distance has to be > 0 (+ve)
                 {
                     f=0;
                     break;
