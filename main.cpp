@@ -1,6 +1,6 @@
 /////////////////////////////////////
-//	Author:			Gaurav Bholla  //
-//	Institution: 	ASET		   //
+//	Author:	Gaurav Bholla  	   //
+//	Institution: ASET	   //
 /////////////////////////////////////
 
 #include <bits/stdc++.h>
