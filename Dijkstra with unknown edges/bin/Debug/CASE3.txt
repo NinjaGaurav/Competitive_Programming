@@ -1,0 +1,89 @@
+20
+
+A D 30
+
+A E 93
+
+A C 79
+
+C I 10
+
+C E 50
+
+D H 32
+
+D E 50
+
+E H 50
+
+E L 14
+
+E J 88
+
+E I 18
+
+L H 50
+
+L I 69
+
+L F 32
+
+L K 78
+
+I J 63
+
+I F 50
+
+H M 55
+
+H K 71
+
+J G 75
+
+J B 92
+
+J N 57
+
+F J 61
+
+F N 53
+
+F K 28
+
+K G 28
+
+K B 86
+
+G Q 3
+
+G B 100
+
+Q B 50
+
+Q P 50
+
+N B 61
+
+N S 26
+
+M O 79
+
+M R 50
+
+R O 23
+
+R T 14
+
+S R 4
+
+S P 50
+
+S Q 50
+
+T P 32
+
+T N 18
+
+P B 50
+
+P N 50

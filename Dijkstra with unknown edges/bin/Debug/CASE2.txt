@@ -1,0 +1,53 @@
+15
+
+A O 100
+
+A G 16
+
+A C 17
+
+A J 2
+
+O B 100
+
+G E 7
+
+C K 10
+
+C M 5
+
+C J 12
+
+K E 11
+
+K G 33
+
+E O 27
+
+E H 25
+
+E L 6
+
+L B 16
+
+L D 32
+
+H B 24
+
+D B 18
+
+J N 14
+
+M O 24
+
+M F 25
+
+F B 3
+
+N F 31
+
+N I 50
+
+I B 34
+
+I D 19
