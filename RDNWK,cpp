@@ -1,0 +1,79 @@
+/////////////////////////////////////
+//	Author:	Gaurav Bholla  	   //
+//	Institution: ASET	   //
+/////////////////////////////////////
+
+#include <bits/stdc++.h>
+using namespace std;
+
+#define rep(i, a, b) for(long long i = a; i < (b); ++i)
+#define repi(i, a, b) for(long long i = a; i >= (b); --i)
+#define trav(a, x) for(auto& a : x)
+#define all(x) x.begin(), x.end()
+#define sz(x) (int)(x).size()
+#define endl '\n'
+#define MAXXX 1000000000
+typedef long long ll;
+typedef pair<ll, ll> pii;
+typedef vector<ll> vi;
+struct magic
+{
+    ll I,K,S,D,A;
+};
+int main() {
+
+	cin.sync_with_stdio(0); cin.tie(0);
+	cin.exceptions(cin.failbit);
+	ll tt;
+	cin>>tt;
+	rep(t,0,tt)
+	{
+	    ll n;
+	    cin>>n;
+	    vector<vi> cost(n,vi(n,MAXXX));
+	    rep(x,0,n)
+	        cost[x][x]=0;
+	    rep(i,0,n-1)
+	        rep(j,i+1,n)
+	        {
+	            cin>>cost[i][j];
+	            if(cost[i][j]==-1)
+	                cost[i][j]=MAXXX;
+	            cost[j][i]=cost[i][j];
+	        }
+	    ll p;
+	    cin>>p;
+	    ll rank[p];
+	    rep(i,0,p)
+	        cin>>rank[i];
+	    ll q;
+	    cin>>q;
+	    vector<magic> final(q);
+	    rep(i,0,q)
+	        {
+	            cin>>final[i].K>>final[i].S>>final[i].D;
+	            final[i].I=i;
+	        }
+	    sort(all(final), [](auto& A,auto& B){ return A.K<B.K; } );  
+	    ll k1=0,i1=0;
+	    do{
+	        while(i1<q && k1==final[i1].K)
+	            {
+	                final[i1].A=cost[final[i1].S-1][final[i1].D-1];
+	                i1++;
+	            }
+	        k1++;
+            if(k1<=p)
+            rep(x,0,n)
+            	rep(y,0,n)
+            		cost[x][y]=min(cost[x][y],cost[x][rank[k1-1]-1]+cost[rank[k1-1]-1][y]);
+	    }while(k1<=p && i1<q);
+	   sort(all(final), [](auto& A,auto& B){ return A.I<B.I; } );	
+	   cout<<"Case "<<t+1<<":";
+	   rep(i,0,q)
+	   	     final[i].A!=MAXXX?cout<<" "<<final[i].A:cout<<" -1";
+	   cout<<endl;
+
+	}
+	return 0;
+}
