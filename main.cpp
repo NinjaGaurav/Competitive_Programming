@@ -1,17 +1,19 @@
 /////////////////////////////////////
-//	Author:	Gaurav Bholla  	   //
+//	Author: Gaurav Bholla      //
 //	Institution: ASET	   //
 /////////////////////////////////////
 
 #include <bits/stdc++.h>
 using namespace std;
 
-#define rep(i, a, b) for(long long i = a; i < (b); ++i)
-#define repi(i, a, b) for(long long i = a; i >= (b); --i)
+#define rep(i, a, b) for(int i = a; i < (b); ++i)
+#define repi(i, a, b) for(int i = a; i >= (b); --i)
 #define trav(a, x) for(auto& a : x)
 #define all(x) x.begin(), x.end()
 #define sz(x) (int)(x).size()
 #define endl '\n'
+#define PB push_back
+#define MP make_pair
 typedef long long ll;
 typedef pair<ll, ll> pii;
 typedef vector<ll> vi;
