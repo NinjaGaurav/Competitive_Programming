@@ -91,12 +91,7 @@ int main(){
                 else
                 {
                     --aux[i];
-                    ++aux[i+ c[j]]; // check this CRITICAL line
-            /*        if(i+ c[j]>p)   // effect is from [i, i+c[j])  max effect could be till last i.e. p-1 index or [i,p)
-                    {
-                        flag=0;
-                        break;
-                    }*/
+                    ++aux[i+ c[j]]; 
                     ++j;
                     --i;
                     continue;
