@@ -29,7 +29,6 @@ bool valid(string XOR, ll i)
 }
 ll solve(vi& arr, ll i, string XOR)
 {
-
     if(i>=arr.size())
         return 0;
     ll rtrn=solve(arr,i+1,XOR); //skip and find
