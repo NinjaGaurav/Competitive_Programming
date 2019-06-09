@@ -1,5 +1,5 @@
 # Competitive Programming
-Programming problems solved using C++
+Programming problems solved using C++. The **Folder/File Name** corresponding to the **Problem code/Title** contains the required solution.
 
 > I use CodeBlocks IDE (C++)
 
