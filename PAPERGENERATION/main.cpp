@@ -17,14 +17,14 @@ using namespace std;
 typedef long long ll;
 typedef pair<ll, ll> pii;
 typedef vector<ll> vi;
-ll F(ll n)
+ll F(ll n)	// Factorial calculator
 {
     ll ans=1;
     rep(i,1,n+1)
         ans*=i;
     return ans;
 }
-ll nCr(ll n, ll r)
+ll nCr(ll n, ll r)	//nCr calculator
 {
     return F(n)/(F(n-r)*F(r));
 }
@@ -32,17 +32,18 @@ int main() {
 
 	cin.sync_with_stdio(0); cin.tie(0);
 	cin.exceptions(cin.failbit);
-	// TRYING TO USE SET THEORY OF CLASS X
+	// TRYING TO USE SET THEORY
 	ll e,m,h,x,y,z,XXX,ans;
 	cin>>x>>e>>y>>m>>z>>h;
 	char a,b,c;
 	cin>>a>>b>>c;
 	ll mx=0,my=0,mz=0;
+	// Total ways is can be found using simple formula (nCr):
 	ans=nCr(x,e)*nCr(y,m)*nCr(z,h);
 	cout<<ans<<endl;
-
+    //NOW WE SUBTRACT THE WAYS NOT POSSIBLE FOR 2nd Output (the 2 conditions given)
     //COND 1
-
+	//find difficulty 
 	XXX=(int(a-'A')+1);
 	if(XXX<=x)
         mx++;
@@ -57,11 +58,11 @@ int main() {
         my++;
     else
         mz++;
-
+    //subtract from total ways
     ans=ans-nCr(x-mx,e-mx)*nCr(y-my,m-my)*nCr(z-mz,h-mz);
 
     //COND 2
-
+	//find difficulty & subtract
     XXX=(int(c-'A')+1);
 	if(XXX<=x)
         {
@@ -78,6 +79,7 @@ int main() {
             mz++;
             ans-=nCr(x,e)*nCr(y,m)*nCr(z-1,h-1);
         }
+    // add one since we can use one question only once and add the part that was subtracted twice i.e. was common in conditions 1 & 2
     ans = ans + 1 + nCr(x-mx,e-mx)*nCr(y-my,m-my)*nCr(z-mz,h-mz);
     cout<<ans;
 	return 0;
