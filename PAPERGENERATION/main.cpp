@@ -26,6 +26,8 @@ ll F(ll n)	// Factorial calculator
 }
 ll nCr(ll n, ll r)	//nCr calculator
 {
+    if(n<0 || r<0)  //Need to modify the nCr formula since we couldn't calculate nCr if r is -ve (if we omit we get 1)
+        return 0;
     return F(n)/(F(n-r)*F(r));
 }
 int main() {
