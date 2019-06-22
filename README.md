@@ -1,7 +1,7 @@
 # Competitive Programming
-Programming problems solved using C++. The **Folder/File Name** corresponding to the **Problem code/Title** contains the required solution.
+Programming problems solved using C++/Python. The **Folder/File Name** corresponding to the **Problem code/Title** contains the required solution.
 
-> I use CodeBlocks IDE (C++)
+> I use CodeBlocks IDE (C++) and PyCharm IDE (Python 3)
 
 Competitive programming is a mind sport usually held over the Internet or a local network, involving participants trying to program according to provided specifications. Contestants are referred to as sport programmers. Competitive programming is recognized and supported by several multinational software and Internet companies, such as Google and Facebook.There are several organizations who host programming competitions on a regular basis.
 
