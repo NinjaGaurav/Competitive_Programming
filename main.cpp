@@ -1,8 +1,7 @@
-/////////////////////////////////////
-//	Author: Gaurav Bholla      //
-//	Institution: ASET	   //
-/////////////////////////////////////
-
+///////////////////////////////////
+//      Author:  Gaurav Bholla   //
+//      Institution: ASET        //
+///////////////////////////////////
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -14,9 +13,11 @@ using namespace std;
 #define endl '\n'
 #define PB push_back
 #define MP make_pair
+#define MOD 1000000007
 typedef long long ll;
 typedef pair<ll, ll> pii;
 typedef vector<ll> vi;
+typedef vector< vector<ll> > matrix;
 
 int main() {
 
