@@ -1,0 +1,100 @@
+<div class="ttypography">
+ <div class="problem-statement">
+  <div class="header">
+   <div class="title">
+    E. New Reform
+   </div>
+   <div class="time-limit">
+    <div class="property-title">
+     time limit per test
+    </div>1 second
+   </div>
+   <div class="memory-limit">
+    <div class="property-title">
+     memory limit per test
+    </div>256 megabytes
+   </div>
+   <div class="input-file">
+    <div class="property-title">
+     input
+    </div>standard input
+   </div>
+   <div class="output-file">
+    <div class="property-title">
+     output
+    </div>standard output
+   </div>
+  </div>
+  <div>
+   <p>Berland has <span class="tex-span"><i>n</i></span> cities connected by <span class="tex-span"><i>m</i></span> bidirectional roads. No road connects a city to itself, and each pair of cities is connected by no more than one road. It is <span class="tex-font-style-bf">not guaranteed</span> that you can get from any city to any other one, using only the existing roads.</p>
+   <p>The President of Berland decided to make changes to the road system and instructed the Ministry of Transport to make this reform. Now, each road should be unidirectional (only lead from one city to another).</p>
+   <p>In order not to cause great resentment among residents, the reform needs to be conducted so that there can be as few separate cities as possible. A city is considered <span class="tex-font-style-it">separate</span>, if no road leads into it, while it is allowed to have roads leading from this city.</p>
+   <p>Help the Ministry of Transport to find the minimum possible number of separate cities after the reform.</p>
+  </div>
+  <div class="input-specification">
+   <div class="section-title">
+    Input
+   </div>
+   <p>The first line of the input contains two positive integers, <span class="tex-span"><i>n</i></span> and <span class="tex-span"><i>m</i></span> — the number of the cities and the number of roads in Berland (<span class="tex-span">2???<i>n</i>???100?000</span>, <span class="tex-span">1???<i>m</i>???100?000</span>). </p>
+   <p>Next <span class="tex-span"><i>m</i></span> lines contain the descriptions of the roads: the <span class="tex-span"><i>i</i></span>-th road is determined by two distinct integers <span class="tex-span"><i>x</i><sub class="lower-index"><i>i</i></sub>,?<i>y</i><sub class="lower-index"><i>i</i></sub></span> (<span class="tex-span">1???<i>x</i><sub class="lower-index"><i>i</i></sub>,?<i>y</i><sub class="lower-index"><i>i</i></sub>???<i>n</i></span>, <span class="tex-span"><i>x</i><sub class="lower-index"><i>i</i></sub>???<i>y</i><sub class="lower-index"><i>i</i></sub></span>), where <span class="tex-span"><i>x</i><sub class="lower-index"><i>i</i></sub></span> and <span class="tex-span"><i>y</i><sub class="lower-index"><i>i</i></sub></span> are the numbers of the cities connected by the <span class="tex-span"><i>i</i></span>-th road.</p>
+   <p>It is guaranteed that there is no more than one road between each pair of cities, but it is not guaranteed that from any city you can get to any other one, using only roads.</p>
+  </div>
+  <div class="output-specification">
+   <div class="section-title">
+    Output
+   </div>
+   <p>Print a single integer — the minimum number of separated cities after the reform.</p>
+  </div>
+  <div class="sample-tests">
+   <div class="section-title">
+    Examples
+   </div>
+   <div class="sample-test">
+    <div class="input">
+     <div class="title">
+      Input
+     </div>
+     <pre>4 3<br>2 1<br>1 3<br>4 3<br></pre>
+    </div>
+    <div class="output">
+     <div class="title">
+      Output
+     </div>
+     <pre>1<br></pre>
+    </div>
+    <div class="input">
+     <div class="title">
+      Input
+     </div>
+     <pre>5 5<br>2 1<br>1 3<br>2 3<br>2 5<br>4 3<br></pre>
+    </div>
+    <div class="output">
+     <div class="title">
+      Output
+     </div>
+     <pre>0<br></pre>
+    </div>
+    <div class="input">
+     <div class="title">
+      Input
+     </div>
+     <pre>6 5<br>1 2<br>2 3<br>4 5<br>4 6<br>5 6<br></pre>
+    </div>
+    <div class="output">
+     <div class="title">
+      Output
+     </div>
+     <pre>1<br></pre>
+    </div>
+   </div>
+  </div>
+  <div class="note">
+   <div class="section-title">
+    Note
+   </div>
+   <p>In the first sample the following road orientation is allowed: <img align="middle" class="tex-formula" src="/predownloaded/ab/3a/ab3aa0026cb5ab74ad3902d3590f907b613f69c4.png" style="max-width: 100.0%;max-height: 100.0%;">, <img align="middle" class="tex-formula" src="/predownloaded/3b/14/3b145c80265496c32b79a686aff12a38adc43bd0.png" style="max-width: 100.0%;max-height: 100.0%;">, <img align="middle" class="tex-formula" src="/predownloaded/30/21/3021ae6fa6f7c94e1f40d6b540d0929167ebc0e4.png" style="max-width: 100.0%;max-height: 100.0%;">.</p>
+   <p>The second sample: <img align="middle" class="tex-formula" src="/predownloaded/ab/3a/ab3aa0026cb5ab74ad3902d3590f907b613f69c4.png" style="max-width: 100.0%;max-height: 100.0%;">, <img align="middle" class="tex-formula" src="/predownloaded/11/40/1140548295e0c0bf64e12e6f56488dfe92f20fd4.png" style="max-width: 100.0%;max-height: 100.0%;">, <img align="middle" class="tex-formula" src="/predownloaded/87/b9/87b9bfe02d6490736188a0be16d7fef0a4279045.png" style="max-width: 100.0%;max-height: 100.0%;">, <img align="middle" class="tex-formula" src="/predownloaded/5d/37/5d370bbbb6427ffa33d37f23262c8c7634bc6a33.png" style="max-width: 100.0%;max-height: 100.0%;">, <img align="middle" class="tex-formula" src="/predownloaded/30/21/3021ae6fa6f7c94e1f40d6b540d0929167ebc0e4.png" style="max-width: 100.0%;max-height: 100.0%;">.</p>
+   <p>The third sample: <img align="middle" class="tex-formula" src="/predownloaded/ab/3a/ab3aa0026cb5ab74ad3902d3590f907b613f69c4.png" style="max-width: 100.0%;max-height: 100.0%;">, <img align="middle" class="tex-formula" src="/predownloaded/87/b9/87b9bfe02d6490736188a0be16d7fef0a4279045.png" style="max-width: 100.0%;max-height: 100.0%;">, <img align="middle" class="tex-formula" src="/predownloaded/0f/9b/0f9b942b5c5fa38f535dcaefa3365f4f534dc92b.png" style="max-width: 100.0%;max-height: 100.0%;">, <img align="middle" class="tex-formula" src="/predownloaded/dd/30/dd30cf6ae26f11b94fbe9e9c21e194e8edac7ef3.png" style="max-width: 100.0%;max-height: 100.0%;">, <img align="middle" class="tex-formula" src="/predownloaded/8e/6f/8e6f0f48157ac5c88e9171a93d93e383313c7177.png" style="max-width: 100.0%;max-height: 100.0%;">.</p>
+  </div>
+ </div>
+</div>
