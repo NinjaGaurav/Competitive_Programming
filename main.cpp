@@ -11,6 +11,8 @@ using namespace std;
 #define all(x) x.begin(), x.end()
 #define sz(x) (int)(x).size()
 #define endl '\n'
+#define FI first
+#define SE second
 #define PB push_back
 #define MP make_pair
 #define MOD 1000000007
