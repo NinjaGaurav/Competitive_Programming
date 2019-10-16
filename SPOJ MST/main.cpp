@@ -1,5 +1,5 @@
 #include <bits/stdc++.h>
-
+// KRUSKAL
 using namespace std;
 
 vector < int > parent, depth;
