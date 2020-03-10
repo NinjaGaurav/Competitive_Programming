@@ -42,7 +42,7 @@ inline std::ostream &operator << (std::ostream & os,const std::unordered_map<T1,
 int add(int a, int b, int c){int res=a+b;return(res>=c?res-c:res);}
 int mod_neg(int a, int b, int c){int res;if(abs(a-b)<c)res=a-b;else res=(a-b)%c;return(res<0?res+c:res);}
 int mul(int a, int b, int c){ll res=(ll)a*b;return(res>=c?res%c:res);}
-ll mulmod(ll a,ll b, ll m){ll q = (ll)(((LD)a*(LD)b)/(LD)m);ll r=a*b-q*m;if(r>m)r%=m;if(r<0)r+=m;return r;}
+ll mulmod(ll a,ll b, ll m){ll q = (ll)(((long double)a*(long double)b)/(long double)m);ll r=a*b-q*m;if(r>m)r%=m;if(r<0)r+=m;return r;}
 template<typename T>T expo(T e, T n){T x=1,p=e;while(n){if(n&1)x=x*p;p=p*p;n>>=1;}return x;}
 template<typename T>T power(T e, T n, T m){T x=1,p=e;while(n){if(n&1)x=mul(x,p,m);p=mul(p,p,m);n>>=1;}return x;}
 template<typename T>T extended_euclid(T a, T b, T &x, T &y){T xx=0,yy=1;y=0;x=1;while(b){T q=a/b,t=b;b=a%b;a=t;\
