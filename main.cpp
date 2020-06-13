@@ -49,7 +49,8 @@ template<typename T>T extended_euclid(T a, T b, T &x, T &y){T xx=0,yy=1;y=0;x=1;
 t=xx;xx=x-q*xx;x=t;t=yy;yy=y-q*yy;y=t;}return a;}
 template<typename T>T mod_inverse(T a, T n){T x,y,z=0;T d=extended_euclid(a,n,x,y);return(d>1?-1:mod_neg(x,z,n));}
 
-#define rep(i, begin, end) for (__typeof(end) i = (begin) - ((begin) > (end)); i != (end) - ((begin) > (end)); i += 1 - 2 * ((begin) > (end)))
+#define rep(i, a, b) for(int i = a; i < (b); ++i)
+#define repi(i, a, b) for(int i = a; i >= (b); --i)
 #define trav(a, x) for(auto& a : x)
 #define all(x) x.begin(), x.end()
 #define sz(x) (int)(x).size()
