@@ -6,11 +6,6 @@
 
 using namespace std;
 
-typedef long long ll;
-typedef pair<ll, ll> pii;
-typedef vector<ll> vi;
-typedef vector< vector<ll> > matrix;
-
 #define error(args...) { string _s = #args; replace(_s.begin(), _s.end(), ',', ' '); stringstream _ss(_s); istream_iterator<string> _it(_ss); err(_it, args); }
 void err(istream_iterator<string> it) {}
 template<typename T, typename... Args>
@@ -20,7 +15,7 @@ inline std::ostream& operator << (std::ostream& os, const std::pair<T1, T2>& p) 
 template<typename T>
 inline std::ostream &operator << (std::ostream & os,const std::vector<T>& v) { bool first = true; for(unsigned int i = 0; i < v.size(); i++) {
         if(!first) os << " "; os << v[i]; first = false; }
-       return os; }
+    return os; }
 template<typename T>
 inline std::ostream &operator << (std::ostream & os,const std::set<T>& v) { bool first = true; os << "{";
     for (typename std::set<T>::const_iterator ii = v.begin(); ii != v.end(); ++ii) {
@@ -39,12 +34,11 @@ template<typename T1, typename T2>
 inline std::ostream &operator << (std::ostream & os,const std::unordered_map<T1, T2>& v) {
     return os << std::map<T1, T2>(v.begin(), v.end()); }
 
-int add(int a, int b, int c){int res=a+b;return(res>=c?res-c:res);}
-int mod_neg(int a, int b, int c){int res;if(abs(a-b)<c)res=a-b;else res=(a-b)%c;return(res<0?res+c:res);}
-int mul(int a, int b, int c){ll res=(ll)a*b;return(res>=c?res%c:res);}
-ll mulmod(ll a,ll b, ll m){ll q = (ll)(((long double)a*(long double)b)/(long double)m);ll r=a*b-q*m;if(r>m)r%=m;if(r<0)r+=m;return r;}
-template<typename T>T expo(T e, T n){T x=1,p=e;while(n){if(n&1)x=x*p;p=p*p;n>>=1;}return x;}
-template<typename T>T power(T e, T n, T m){T x=1,p=e;while(n){if(n&1)x=mul(x,p,m);p=mul(p,p,m);n>>=1;}return x;}
+long long mod_add(long long a, long long b, long long c){long long res=a+b;return(res>=c?res-c:res);}
+long long mod_neg(long long a, long long b, long long c){long long res;if(abs(a-b)<c)res=a-b;else res=(a-b)%c;return(res<0?res+c:res);}
+long long mod_mul(long long a, long long b, long long c){long long res=a*b;return(res>=c?res%c:res);}
+template<typename T>T power(T e, T n){T x=1,p=e;while(n){if(n&1)x=x*p;p=p*p;n>>=1;}return x;}
+template<typename T>T mod_power(T e, T n, T m){T x=1,p=e;while(n){if(n&1)x=mod_mul(x,p,m);p=mod_mul(p,p,m);n>>=1;}return x;}
 template<typename T>T extended_euclid(T a, T b, T &x, T &y){T xx=0,yy=1;y=0;x=1;while(b){T q=a/b,t=b;b=a%b;a=t;\
 t=xx;xx=x-q*xx;x=t;t=yy;yy=y-q*yy;y=t;}return a;}
 template<typename T>T mod_inverse(T a, T n){T x,y,z=0;T d=extended_euclid(a,n,x,y);return(d>1?-1:mod_neg(x,z,n));}
@@ -52,14 +46,18 @@ template<typename T>T mod_inverse(T a, T n){T x,y,z=0;T d=extended_euclid(a,n,x,
 #define rep(i, a, b) for(int i = a; i < (b); ++i)
 #define repi(i, a, b) for(int i = a; i >= (b); --i)
 #define trav(a, x) for(auto& a : x)
-#define all(x) x.begin(), x.end()
+#define all(x) begin(x), end(x)
 #define sz(x) (int)(x).size()
 #define FI first
 #define SE second
 #define PB push_back
 #define MP make_pair
 #define MOD 1000000007
-#define INF 1152921504606846976ll
+#define INF 1152921504606846976LL
+typedef long long ll;
+typedef long double ld;
+typedef pair<ll, ll> pii;
+typedef vector<ll> vi;
 
 int main() {
 
