@@ -34,9 +34,9 @@ template<typename T1, typename T2>
 inline std::ostream &operator << (std::ostream & os,const std::unordered_map<T1, T2>& v) {
     return os << std::map<T1, T2>(v.begin(), v.end()); }
 
-long long mod_add(long long a, long long b, long long c){long long res=a+b;return(res>=c?res-c:res);}
-long long mod_neg(long long a, long long b, long long c){long long res;if(abs(a-b)<c)res=a-b;else res=(a-b)%c;return(res<0?res+c:res);}
-long long mod_mul(long long a, long long b, long long c){long long res=a*b;return(res>=c?res%c:res);}
+long long mod_add(long long a, long long b, long long c = 1000000007){long long res=a+b;return(res>=c?res-c:res);}
+long long mod_neg(long long a, long long b, long long c = 1000000007){long long res;if(abs(a-b)<c)res=a-b;else res=(a-b)%c;return(res<0?res+c:res);}
+long long mod_mul(long long a, long long b, long long c = 1000000007){long long res=a*b;return(res>=c?res%c:res);}
 template<typename T>T power(T e, T n){T x=1,p=e;while(n){if(n&1)x=x*p;p=p*p;n>>=1;}return x;}
 template<typename T>T mod_power(T e, T n, T m){T x=1,p=e;while(n){if(n&1)x=mod_mul(x,p,m);p=mod_mul(p,p,m);n>>=1;}return x;}
 template<typename T>T extended_euclid(T a, T b, T &x, T &y){T xx=0,yy=1;y=0;x=1;while(b){T q=a/b,t=b;b=a%b;a=t;\
